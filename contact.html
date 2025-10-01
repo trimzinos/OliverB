@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0b0f14">
+    <title>Contact — FluxDrop</title>
+    <meta name="description" content="Start a project with FluxDrop. Tell us about your product and goals.">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-contact">
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <header class="site-header" id="top">
+        <div class="container header-inner">
+            <a class="brand" href="index.html" aria-label="FluxDrop home">
+                <img src="assets/logo.svg" alt="FluxDrop logo" width="28" height="28">
+                <span>FluxDrop</span>
+            </a>
+            <nav class="nav">
+                <a href="index.html">Home</a>
+                <a href="work.html">Work</a>
+                <a aria-current="page" href="contact.html" class="cta">Start a Project</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" aria-label="Contact hero">
+            <div class="container hero-inner">
+                <h1>Start a project</h1>
+                <p class="subtitle">Share your goals. We’ll respond within 24 hours with a plan and quote.</p>
+            </div>
+        </section>
+
+        <section class="section section-emphasis">
+            <div class="container contact">
+                <div>
+                    <h2>Tell us about your product</h2>
+                    <p>More context helps us move fast: audience, offer, constraints, timeline, and budget range.</p>
+                </div>
+                <form class="contact-form" name="contact" method="post" data-netlify="true">
+                    <input type="hidden" name="form-name" value="contact">
+                    <label>
+                        <span>Name</span>
+                        <input name="name" type="text" placeholder="Your name" required>
+                    </label>
+                    <label>
+                        <span>Email</span>
+                        <input name="email" type="email" placeholder="you@brand.com" required>
+                    </label>
+                    <label>
+                        <span>Project</span>
+                        <textarea name="project" rows="6" placeholder="Tell us about your product and goals" required></textarea>
+                    </label>
+                    <button class="button primary" type="submit">Request Proposal</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <a class="brand" href="index.html">
+                <img src="assets/logo.svg" alt="FluxDrop logo" width="20" height="20">
+                <span>FluxDrop</span>
+            </a>
+            <p>© <span id="year"></span> FluxDrop. Built for speed and clarity.</p>
+            <div class="social">
+                <a href="#" aria-label="Twitter">Twitter</a>
+                <a href="#" aria-label="Instagram">Instagram</a>
+                <a href="#" aria-label="Email">Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
+
+
