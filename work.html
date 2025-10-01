@@ -1,82 +1,148 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#0b0f14">
-    <title>Work — FluxDrop</title>
-    <meta name="description" content="Selected work from FluxDrop: minimal, fast, conversion-focused dropshipping sites.">
+    <meta name="theme-color" content="#0f1a12">
+    <title>Work with Olive</title>
+    <meta name="description" content="Olive partners with teams to design, build, and scale software products across web and mobile.">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css">
+    <script>
+        (function () {
+            try {
+                const stored = localStorage.getItem('olive-theme');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const theme = stored || (prefersDark ? 'dark' : 'light');
+                const root = document.documentElement;
+                root.dataset.theme = theme;
+                root.classList.toggle('dark', theme === 'dark');
+            } catch (error) {
+                console.error('Theme init failed', error);
+            }
+        })();
+    </script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        olive: {
+                            50: '#f7fbf5',
+                            100: '#ecf5e7',
+                            200: '#d4e7c8',
+                            300: '#b6d5a5',
+                            400: '#96c082',
+                            500: '#7ca765',
+                            600: '#5e8547',
+                            700: '#476538',
+                            800: '#32492a',
+                            900: '#1a2917'
+                        }
+                    },
+                    boxShadow: {
+                        subtle: '0 30px 80px -35px rgba(29, 52, 40, 0.55)'
+                    },
+                    fontFamily: {
+                        sans: ['"DM Sans"', 'Inter', 'system-ui', 'sans-serif']
+                    },
+                    backgroundImage: {
+                        'olive-grid': 'linear-gradient(to right, rgba(15,26,18,0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(15,26,18,0.1) 1px, transparent 1px)'
+                    }
+                }
+            }
+        };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
 </head>
-<body class="page-work">
-    <div class="bg-grid" aria-hidden="true"></div>
-
-    <header class="site-header" id="top">
-        <div class="container header-inner">
-            <a class="brand" href="index.html" aria-label="FluxDrop home">
-                <img src="assets/logo.svg" alt="FluxDrop logo" width="28" height="28">
-                <span>FluxDrop</span>
+<body class="bg-gradient-to-b from-slate-100 via-white to-slate-200 text-slate-900 transition-colors duration-300 dark:from-slate-950 dark:via-slate-950 dark:to-black dark:text-slate-100">
+    <header class="border-b border-slate-200/70 bg-white/80 backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/70">
+        <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-5 sm:flex-nowrap">
+            <a class="flex items-center gap-2 text-lg font-semibold" href="index.html" aria-label="Olive home">
+                <img src="assets/logo.svg" alt="Olive logo" class="h-8 w-8">
+                <span>Olive</span>
             </a>
-            <nav class="nav">
-                <a href="index.html">Home</a>
-                <a aria-current="page" href="work.html">Work</a>
-                <a href="contact.html" class="cta">Start a Project</a>
+            <nav class="flex flex-wrap items-center gap-4 text-sm font-medium text-slate-500 dark:text-slate-300">
+                <a class="hover:text-olive-600 dark:hover:text-olive-200" href="index.html#work">Work with us</a>
+                <a class="hover:text-olive-600 dark:hover:text-olive-200" href="index.html#logos">Logos</a>
+                <a class="hover:text-olive-600 dark:hover:text-olive-200" href="index.html#why">Why Olive</a>
+                <a class="hover:text-olive-600 dark:hover:text-olive-200" href="index.html#start">Start a project</a>
+                <a class="hover:text-olive-600 dark:hover:text-olive-200" href="contact.html">Contact</a>
             </nav>
+            <button type="button" data-theme-toggle class="inline-flex items-center gap-2 rounded-full border border-slate-300/80 px-3 py-1 text-sm font-medium text-slate-600 transition hover:border-olive-400/80 hover:text-olive-600 dark:border-white/15 dark:text-slate-200 dark:hover:border-olive-400/70 dark:hover:text-olive-200">
+                <span aria-hidden="true" class="text-lg" data-theme-icon>☀️</span>
+                <span data-theme-label>Light mode</span>
+            </button>
         </div>
     </header>
 
     <main>
-        <section class="hero" aria-label="Work hero">
-            <div class="container hero-inner">
-                <h1>Selected work</h1>
-                <p class="subtitle">A few snapshots of layouts and flows we’ve built for dropshipping brands.</p>
+        <section class="relative isolate overflow-hidden">
+            <div class="pointer-events-none absolute inset-0 -z-10 bg-olive-grid bg-[size:40px_40px] opacity-40 dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.06)_1px,transparent_1px)]"></div>
+            <div class="mx-auto flex max-w-5xl flex-col gap-10 px-6 py-24 text-left sm:py-28">
+                <p class="text-sm font-semibold uppercase tracking-[0.4em] text-olive-600 dark:text-olive-200">Work with us</p>
+                <h1 class="text-4xl font-semibold tracking-tight sm:text-5xl">We turn ambitious roadmaps into cross-platform software.</h1>
+                <p class="max-w-3xl text-lg text-slate-600 dark:text-slate-200">Every engagement opens with rapid clarity sessions: we map desired outcomes, assess stack constraints, and prioritize what unlocks growth fastest. Olive then embeds as your product unit—research, design, engineering, QA, launch orchestration, and the first rounds of iteration.</p>
+                <div class="grid gap-6 sm:grid-cols-3">
+                    <div class="rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-subtle backdrop-blur dark:border-white/10 dark:bg-white/5">
+                        <h2 class="text-lg font-semibold">Unified squad</h2>
+                        <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">One crew covering product, design, frontend, backend, and native apps so nothing gets lost between handoffs.</p>
+                    </div>
+                    <div class="rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-subtle backdrop-blur dark:border-white/10 dark:bg-white/5">
+                        <h2 class="text-lg font-semibold">Predictable delivery</h2>
+                        <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">Weekly demos, exposure to our dashboards, and transparent burn so stakeholders always know the score.</p>
+                    </div>
+                    <div class="rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-subtle backdrop-blur dark:border-white/10 dark:bg-white/5">
+                        <h2 class="text-lg font-semibold">Sustainable iteration</h2>
+                        <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">Launch-ready docs, instrumentation, and training sessions so your team can extend the work without friction.</p>
+                    </div>
+                </div>
+                <a class="inline-flex w-full items-center justify-center rounded-full bg-olive-600 px-6 py-3 text-sm font-semibold text-white shadow-subtle transition hover:bg-olive-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-olive-300 sm:w-auto" href="contact.html">Tell us what you need</a>
             </div>
         </section>
 
-        <section class="section">
-            <div class="container">
-                <div class="grid-work">
-                    <figure class="work-item">
-                        <img class="work-thumb" src="assets/work/thumb-01.svg" alt="PDP layout for high AOV product">
-                        <figcaption>PDP layout for high AOV product</figcaption>
-                    </figure>
-                    <figure class="work-item">
-                        <img class="work-thumb" src="assets/work/thumb-02.svg" alt="Landing page with urgency patterns">
-                        <figcaption>Landing page with urgency patterns</figcaption>
-                    </figure>
-                    <figure class="work-item">
-                        <img class="work-thumb" src="assets/work/thumb-03.svg" alt="Checkout simplification for mobile">
-                        <figcaption>Checkout simplification for mobile</figcaption>
-                    </figure>
-                    <figure class="work-item">
-                        <img class="work-thumb" src="assets/work/thumb-04.svg" alt="Collection grid with progressive imagery">
-                        <figcaption>Collection grid with progressive imagery</figcaption>
-                    </figure>
-                    <figure class="work-item">
-                        <img class="work-thumb" src="assets/work/thumb-05.svg" alt="Product comparison module">
-                        <figcaption>Product comparison module</figcaption>
-                    </figure>
-                    <figure class="work-item">
-                        <img class="work-thumb" src="assets/work/thumb-06.svg" alt="FAQ + trust blocks">
-                        <figcaption>FAQ + trust blocks</figcaption>
-                    </figure>
+        <section class="border-y border-slate-200/70 bg-slate-100/70 py-20 dark:border-white/10 dark:bg-slate-950/70">
+            <div class="mx-auto max-w-5xl space-y-6 px-6">
+                <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">What Olive brings</h2>
+                <ul class="grid gap-6 text-sm text-slate-600 dark:text-slate-300 sm:grid-cols-2">
+                    <li class="rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-subtle backdrop-blur dark:border-white/10 dark:bg-white/5"><span class="font-semibold text-slate-900 dark:text-white">Cross-platform intuition:</span> Features designed to move effortlessly between desktop, mobile web, and native contexts.</li>
+                    <li class="rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-subtle backdrop-blur dark:border-white/10 dark:bg-white/5"><span class="font-semibold text-slate-900 dark:text-white">Right-sized architecture:</span> Modern stacks selected for maintainability—TypeScript, Swift/Kotlin, GraphQL, serverless, or the best fit for your ops.</li>
+                    <li class="rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-subtle backdrop-blur dark:border-white/10 dark:bg-white/5"><span class="font-semibold text-slate-900 dark:text-white">Operational clarity:</span> Shared roadmaps, async updates, and observability that track every deliverable.</li>
+                    <li class="rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-subtle backdrop-blur dark:border-white/10 dark:bg-white/5"><span class="font-semibold text-slate-900 dark:text-white">Confident transitions:</span> Documentation, component libraries, and pairing sessions to empower your in-house team.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="relative py-20">
+            <div class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,_rgba(124,167,101,0.12),_transparent_70%)]"></div>
+            <div class="mx-auto max-w-5xl space-y-10 px-6">
+                <div class="space-y-4 text-left">
+                    <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">Logos on deck</h2>
+                    <p class="text-lg text-slate-600 dark:text-slate-200">Keep this gallery sharp by dropping assets into <code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs text-slate-700 dark:bg-white/10 dark:text-slate-100">assets/logos/</code>. Update the partial once to reflect your latest traction.</p>
+                </div>
+                <div id="logo-grid" class="grid gap-6 rounded-3xl border border-slate-200 bg-white/80 p-10 text-center text-sm text-slate-500 shadow-subtle backdrop-blur dark:border-white/10 dark:bg-white/5 dark:text-slate-300" hx-get="partials/logos.html" hx-trigger="load" hx-swap="innerHTML" hx-target="#logo-grid">
+                    <p>Loading sample logos…</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="container footer-inner">
-            <a class="brand" href="index.html">
-                <img src="assets/logo.svg" alt="FluxDrop logo" width="20" height="20">
-                <span>FluxDrop</span>
+    <footer class="bg-white/80 py-10 text-sm text-slate-500 backdrop-blur dark:bg-slate-950/80 dark:text-slate-400">
+        <div class="mx-auto flex max-w-6xl flex-col gap-6 px-6 sm:flex-row sm:items-center sm:justify-between">
+            <a class="flex items-center gap-2 text-base font-semibold text-slate-900 dark:text-white" href="index.html">
+                <img src="assets/logo.svg" alt="Olive logo" class="h-7 w-7">
+                <span>Olive</span>
             </a>
-            <p>© <span id="year"></span> FluxDrop. Built for speed and clarity.</p>
-            <div class="social">
-                <a href="#" aria-label="Twitter">Twitter</a>
-                <a href="#" aria-label="Instagram">Instagram</a>
-                <a href="#" aria-label="Email">Email</a>
+            <p>Launch faster with a crew that ships web and mobile together.</p>
+            <div class="flex gap-4 text-sm">
+                <a class="hover:text-olive-600 dark:hover:text-olive-200" href="mailto:hello@olive.studio">Email</a>
+                <a class="hover:text-olive-600 dark:hover:text-olive-200" href="https://cal.com/olive">Book a call</a>
+                <a class="hover:text-olive-600 dark:hover:text-olive-200" href="https://www.linkedin.com/company/olive-uk/">LinkedIn</a>
+                <a class="hover:text-olive-600 dark:hover:text-olive-200" href="https://www.linkedin.com/in/arvin-shafiei/">Founder</a>
             </div>
         </div>
     </footer>
@@ -84,5 +150,3 @@
     <script src="script.js" defer></script>
 </body>
 </html>
-
-

@@ -1,76 +1,152 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#0b0f14">
-    <title>Contact — FluxDrop</title>
-    <meta name="description" content="Start a project with FluxDrop. Tell us about your product and goals.">
+    <meta name="theme-color" content="#0f1a12">
+    <title>Contact Olive</title>
+    <meta name="description" content="Reach the Olive team to kick off new software projects, mobile launches, or ongoing product work.">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css">
+    <script>
+        (function () {
+            try {
+                const stored = localStorage.getItem('olive-theme');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const theme = stored || (prefersDark ? 'dark' : 'light');
+                const root = document.documentElement;
+                root.dataset.theme = theme;
+                root.classList.toggle('dark', theme === 'dark');
+            } catch (error) {
+                console.error('Theme init failed', error);
+            }
+        })();
+    </script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        olive: {
+                            50: '#f7fbf5',
+                            100: '#ecf5e7',
+                            200: '#d4e7c8',
+                            300: '#b6d5a5',
+                            400: '#96c082',
+                            500: '#7ca765',
+                            600: '#5e8547',
+                            700: '#476538',
+                            800: '#32492a',
+                            900: '#1a2917'
+                        }
+                    },
+                    boxShadow: {
+                        subtle: '0 30px 80px -35px rgba(29, 52, 40, 0.55)'
+                    },
+                    fontFamily: {
+                        sans: ['"DM Sans"', 'Inter', 'system-ui', 'sans-serif']
+                    },
+                    backgroundImage: {
+                        'olive-grid': 'linear-gradient(to right, rgba(15,26,18,0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(15,26,18,0.1) 1px, transparent 1px)'
+                    }
+                }
+            }
+        };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
 </head>
-<body class="page-contact">
-    <div class="bg-grid" aria-hidden="true"></div>
-
-    <header class="site-header" id="top">
-        <div class="container header-inner">
-            <a class="brand" href="index.html" aria-label="FluxDrop home">
-                <img src="assets/logo.svg" alt="FluxDrop logo" width="28" height="28">
-                <span>FluxDrop</span>
+<body class="bg-gradient-to-b from-slate-100 via-white to-slate-200 text-slate-900 transition-colors duration-300 dark:from-slate-950 dark:via-slate-950 dark:to-black dark:text-slate-100">
+    <header class="border-b border-slate-200/70 bg-white/80 backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/70">
+        <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-5 sm:flex-nowrap">
+            <a class="flex items-center gap-2 text-lg font-semibold" href="index.html" aria-label="Olive home">
+                <img src="assets/logo.svg" alt="Olive logo" class="h-8 w-8">
+                <span>Olive</span>
             </a>
-            <nav class="nav">
-                <a href="index.html">Home</a>
-                <a href="work.html">Work</a>
-                <a aria-current="page" href="contact.html" class="cta">Start a Project</a>
+            <nav class="flex flex-wrap items-center gap-4 text-sm font-medium text-slate-500 dark:text-slate-300">
+                <a class="hover:text-olive-600 dark:hover:text-olive-200" href="index.html#work">Work with us</a>
+                <a class="hover:text-olive-600 dark:hover:text-olive-200" href="index.html#logos">Logos</a>
+                <a class="hover:text-olive-600 dark:hover:text-olive-200" href="index.html#why">Why Olive</a>
+                <a class="hover:text-olive-600 dark:hover:text-olive-200" href="index.html#start">Start a project</a>
+                <a class="hover:text-olive-600 dark:hover:text-olive-200" aria-current="page" href="contact.html">Contact</a>
             </nav>
+            <button type="button" data-theme-toggle class="inline-flex items-center gap-2 rounded-full border border-slate-300/80 px-3 py-1 text-sm font-medium text-slate-600 transition hover:border-olive-400/80 hover:text-olive-600 dark:border-white/15 dark:text-slate-200 dark:hover:border-olive-400/70 dark:hover:text-olive-200">
+                <span aria-hidden="true" class="text-lg" data-theme-icon>☀️</span>
+                <span data-theme-label>Light mode</span>
+            </button>
         </div>
     </header>
 
     <main>
-        <section class="hero" aria-label="Contact hero">
-            <div class="container hero-inner">
-                <h1>Start a project</h1>
-                <p class="subtitle">Share your goals. We’ll respond within 24 hours with a plan and quote.</p>
+        <section class="relative isolate overflow-hidden">
+            <div class="pointer-events-none absolute inset-0 -z-10 bg-olive-grid bg-[size:40px_40px] opacity-40 dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.06)_1px,transparent_1px)]"></div>
+            <div class="mx-auto flex max-w-5xl flex-col gap-8 px-6 py-24 sm:py-28">
+                <div class="space-y-4">
+                    <p class="text-sm font-semibold uppercase tracking-[0.4em] text-olive-600 dark:text-olive-200">Contact</p>
+                    <h1 class="text-4xl font-semibold tracking-tight sm:text-5xl">Say hello to Olive</h1>
+                    <p class="text-lg text-slate-600 dark:text-slate-200">We ship production software for startups, scale-ups, and operators with ambition. Share what you are building and we will send a game plan within one business day.</p>
+                </div>
+                <div class="grid gap-6 md:grid-cols-2">
+                    <div class="space-y-6 rounded-3xl border border-slate-200 bg-white/80 p-8 shadow-subtle backdrop-blur dark:border-white/10 dark:bg-white/5">
+                        <h2 class="text-xl font-semibold">Direct lines</h2>
+                        <ul class="space-y-3 text-sm text-slate-600 dark:text-slate-300">
+                            <li><span class="font-semibold text-slate-900 dark:text-white">Email:</span> <a class="text-olive-600 hover:underline dark:text-olive-200" href="mailto:hello@olive.studio">hello@olive.studio</a></li>
+                            <li><span class="font-semibold text-slate-900 dark:text-white">Calendly:</span> <a class="text-olive-600 hover:underline dark:text-olive-200" href="https://cal.com/olive">cal.com/olive</a></li>
+                            <li><span class="font-semibold text-slate-900 dark:text-white">Signal:</span> +1 (737) 555-0141</li>
+                            <li><span class="font-semibold text-slate-900 dark:text-white">LinkedIn:</span> <a class="text-olive-600 hover:underline dark:text-olive-200" href="https://www.linkedin.com/company/olive-uk/">linkedin.com/company/olive-uk</a></li>
+                            <li><span class="font-semibold text-slate-900 dark:text-white">Founder:</span> <a class="text-olive-600 hover:underline dark:text-olive-200" href="https://www.linkedin.com/in/arvin-shafiei/">Arvin Shafiei</a></li>
+                            <li><span class="font-semibold text-slate-900 dark:text-white">HQ:</span> Austin, TX · Remote-first across North America & EU</li>
+                        </ul>
+                    </div>
+                    <form class="grid gap-4 rounded-3xl border border-slate-200 bg-white/80 p-8 shadow-subtle backdrop-blur dark:border-white/10 dark:bg-white/5" name="olive-contact" method="post" data-netlify="true">
+                        <input type="hidden" name="form-name" value="olive-contact">
+                        <label class="flex flex-col gap-1 text-sm font-medium text-slate-700 dark:text-slate-100">
+                            Name
+                            <input class="rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 focus:border-olive-400 focus:outline-none focus:ring-4 focus:ring-olive-200/60 dark:border-white/20 dark:bg-slate-900/70 dark:text-slate-100 dark:focus:border-olive-400 dark:focus:ring-olive-500/30" name="name" type="text" placeholder="Your name" required>
+                        </label>
+                        <label class="flex flex-col gap-1 text-sm font-medium text-slate-700 dark:text-slate-100">
+                            Email
+                            <input class="rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 focus:border-olive-400 focus:outline-none focus:ring-4 focus:ring-olive-200/60 dark:border-white/20 dark:bg-slate-900/70 dark:text-slate-100 dark:focus:border-olive-400 dark:focus:ring-olive-500/30" name="email" type="email" placeholder="you@company.com" required>
+                        </label>
+                        <label class="flex flex-col gap-1 text-sm font-medium text-slate-700 dark:text-slate-100">
+                            What can we help with?
+                            <textarea class="h-32 rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 focus:border-olive-400 focus:outline-none focus:ring-4 focus:ring-olive-200/60 dark:border-white/20 dark:bg-slate-900/70 dark:text-slate-100 dark:focus:border-olive-400 dark:focus:ring-olive-500/30" name="project" placeholder="Share the vision, timeline, or current stack" required></textarea>
+                        </label>
+                        <button class="mt-2 inline-flex items-center justify-center rounded-full bg-olive-600 px-6 py-3 text-sm font-semibold text-white shadow-subtle transition hover:bg-olive-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-olive-300" type="submit">Send message</button>
+                    </form>
+                </div>
             </div>
         </section>
 
-        <section class="section section-emphasis">
-            <div class="container contact">
-                <div>
-                    <h2>Tell us about your product</h2>
-                    <p>More context helps us move fast: audience, offer, constraints, timeline, and budget range.</p>
-                </div>
-                <form class="contact-form" name="contact" method="post" data-netlify="true">
-                    <input type="hidden" name="form-name" value="contact">
-                    <label>
-                        <span>Name</span>
-                        <input name="name" type="text" placeholder="Your name" required>
-                    </label>
-                    <label>
-                        <span>Email</span>
-                        <input name="email" type="email" placeholder="you@brand.com" required>
-                    </label>
-                    <label>
-                        <span>Project</span>
-                        <textarea name="project" rows="6" placeholder="Tell us about your product and goals" required></textarea>
-                    </label>
-                    <button class="button primary" type="submit">Request Proposal</button>
+        <section class="border-t border-slate-200/70 bg-slate-100/70 py-16 dark:border-white/10 dark:bg-slate-950/70">
+            <div class="mx-auto max-w-4xl space-y-6 px-6 text-sm text-slate-600 dark:text-slate-300">
+                <h2 class="text-lg font-semibold text-slate-900 dark:text-white">Prefer async updates?</h2>
+                <p>Our monthly memo covers Olive availability, release retros, and experiments worth copying across web and mobile.</p>
+                <form class="flex flex-col gap-3 sm:flex-row" name="olive-updates" method="post" data-netlify="true">
+                    <input type="hidden" name="form-name" value="olive-updates">
+                    <label class="sr-only" for="updates-email">Email</label>
+                    <input id="updates-email" class="h-12 flex-1 rounded-full border border-slate-300 bg-white px-4 text-sm text-slate-900 focus:border-olive-400 focus:outline-none focus:ring-4 focus:ring-olive-200/60 dark:border-white/20 dark:bg-slate-900/70 dark:text-slate-100 dark:focus:border-olive-400 dark:focus:ring-olive-500/30" name="email" type="email" placeholder="you@olive.studio" required>
+                    <button class="inline-flex h-12 items-center justify-center rounded-full bg-olive-600 px-6 text-sm font-semibold text-white shadow-subtle transition hover:bg-olive-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-olive-300" type="submit">Join list</button>
                 </form>
             </div>
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="container footer-inner">
-            <a class="brand" href="index.html">
-                <img src="assets/logo.svg" alt="FluxDrop logo" width="20" height="20">
-                <span>FluxDrop</span>
+    <footer class="bg-white/80 py-10 text-sm text-slate-500 backdrop-blur dark:bg-slate-950/80 dark:text-slate-400">
+        <div class="mx-auto flex max-w-6xl flex-col gap-6 px-6 sm:flex-row sm:items-center sm:justify-between">
+            <a class="flex items-center gap-2 text-base font-semibold text-slate-900 dark:text-white" href="index.html">
+                <img src="assets/logo.svg" alt="Olive logo" class="h-7 w-7">
+                <span>Olive</span>
             </a>
-            <p>© <span id="year"></span> FluxDrop. Built for speed and clarity.</p>
-            <div class="social">
-                <a href="#" aria-label="Twitter">Twitter</a>
-                <a href="#" aria-label="Instagram">Instagram</a>
-                <a href="#" aria-label="Email">Email</a>
+            <p>© <span id="year"></span> Olive Studio. We answer every message.</p>
+            <div class="flex gap-4 text-sm">
+                <a class="hover:text-olive-600 dark:hover:text-olive-200" href="mailto:hello@olive.studio">Email</a>
+                <a class="hover:text-olive-600 dark:hover:text-olive-200" href="https://cal.com/olive">Book a call</a>
+                <a class="hover:text-olive-600 dark:hover:text-olive-200" href="https://www.linkedin.com/company/olive-uk/">LinkedIn</a>
+                <a class="hover:text-olive-600 dark:hover:text-olive-200" href="https://www.linkedin.com/in/arvin-shafiei/">Founder</a>
             </div>
         </div>
     </footer>
@@ -78,5 +154,3 @@
     <script src="script.js" defer></script>
 </body>
 </html>
-
-
