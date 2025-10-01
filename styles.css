@@ -1,0 +1,149 @@
+/*
+  FluxDrop — Minimalist Dropshipping Websites
+  Aesthetic: sleek, minimal, subtle techy, high contrast with soft gradients
+*/
+
+/* CSS Reset (modern, minimal) */
+*,*::before,*::after{box-sizing:border-box}
+html,body{height:100%}
+body,h1,h2,h3,h4,p,figure,blockquote,ol,ul{margin:0}
+ol,ul{list-style:none;padding:0}
+img{max-width:100%;display:block}
+input,button,textarea,select{font:inherit}
+
+:root{
+  --bg:#0b0f14;
+  --bg-elev:#0f141b;
+  --text:#e6edf7;
+  --muted:#9aa8bc;
+  --line:#1a212b;
+  --brand:#34d399; /* green */
+  --brand-2:#22c55e; /* green */
+  --accent:linear-gradient(120deg,var(--brand),var(--brand-2));
+  --shadow:0 10px 30px rgba(0,0,0,.35);
+  --radius:14px;
+  --container:1120px;
+}
+
+body{
+  background:radial-gradient(1200px 600px at 20% -10%,#14202c 0%,transparent 60%),
+             radial-gradient(1000px 500px at 120% -20%,#1a1230 0%,transparent 60%),
+             var(--bg);
+  color:var(--text);
+  font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.bg-grid{
+  position:fixed;inset:0;pointer-events:none;opacity:.15;mix-blend-mode:screen;
+  background-image:linear-gradient(to right, rgba(255,255,255,.04) 1px, transparent 1px),
+                   linear-gradient(to bottom, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size:48px 48px;
+}
+
+.container{width:min(100% - 32px, var(--container));margin-inline:auto}
+
+.site-header{position:sticky;top:0;z-index:50;background:rgba(11,15,20,.6);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.site-header.elevated{box-shadow:0 8px 24px rgba(0,0,0,.28);background:rgba(11,15,20,.75)}
+.site-header::before{content:"";position:absolute;inset:0 0 auto 0;height:34px;background:linear-gradient(180deg,rgba(9,13,18,.9),rgba(9,13,18,.6));border-bottom:1px solid #0f1924}
+.site-header .header-inner{position:relative;padding-top:42px}
+.site-header::after{content:"";position:absolute;top:9px;left:14px;width:46px;height:12px;background:
+  radial-gradient(circle at 6px 6px,#ff5f57 6px,transparent 7px),
+  radial-gradient(circle at 23px 6px,#ffbd2e 6px,transparent 7px),
+  radial-gradient(circle at 40px 6px,#28c840 6px,transparent 7px)}
+.brand{display:flex;align-items:center;gap:10px;color:var(--text);text-decoration:none;font-weight:600;letter-spacing:.2px}
+.brand img{filter:drop-shadow(0 2px 8px rgba(109,220,255,.25))}
+
+/* Terminal-style tabs */
+.nav{display:flex;gap:6px;align-items:flex-end;position:relative}
+.nav a{color:var(--muted);text-decoration:none;padding:6px 12px;border-radius:10px 10px 0 0;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;letter-spacing:.2px;border:1px solid #0f1924;border-bottom:none;background:rgba(12,17,23,.7);position:relative;top:-34px}
+.nav a:hover{color:var(--text);background:rgba(255,255,255,.06)}
+.nav a[aria-current="page"], .nav .cta[aria-current="page"]{color:var(--text);background:#111723}
+.nav .cta{border-color:#153247}
+
+.hero{padding:90px 0 40px;border-bottom:1px solid var(--line)}
+.hero-inner{display:flex;flex-direction:column;gap:22px;align-items:flex-start}
+.hero h1{font-size:clamp(32px,6vw,56px);line-height:1.1;letter-spacing:-.02em;max-width:18ch}
+.subtitle{color:var(--muted);max-width:56ch}
+.hero-cta{display:flex;gap:12px;margin-top:6px}
+
+/* Per-page unique feels */
+.page-home .hero h1{background:var(--accent);-webkit-background-clip:text;background-clip:text;color:transparent}
+.page-work .hero{background:linear-gradient(180deg,rgba(127,90,240,.08),transparent 60%)}
+.page-work .work-thumb{background:linear-gradient(135deg,rgba(127,90,240,.18),rgba(109,220,255,.12))}
+.page-contact .hero{background:linear-gradient(180deg,rgba(109,220,255,.08),transparent 60%)}
+
+.button{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);text-decoration:none;color:var(--text);transition:transform .2s ease, box-shadow .2s ease, background .2s ease; font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
+.button:hover{transform:translateY(-1px)}
+.button.primary{background:var(--accent);color:#0b0f14;border-color:transparent;box-shadow:0 6px 24px rgba(125,160,255,.25)}
+.button.ghost{background:rgba(255,255,255,.02)}
+
+.metrics{display:flex;gap:18px;flex-wrap:wrap;margin-top:12px}
+.metrics li{display:flex;flex-direction:column;background:rgba(255,255,255,.02);border:1px solid var(--line);padding:10px 12px;border-radius:12px}
+.metrics strong{font-size:18px}
+.metrics span{color:var(--muted);font-size:13px}
+
+.accent-gradient{display:inline-block;height:.6em;width:6ch;margin-left:.3ch;border-radius:999px;background:var(--accent);filter:blur(18px);opacity:.35}
+
+.section{padding:70px 0;border-bottom:1px solid var(--line)}
+.section h2{font-size:28px;margin-bottom:22px;position:relative}
+.section h2::before{content:"$ ";color:var(--brand);font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-size:.9em;margin-right:.2ch;opacity:.9}
+.page-work .section h2::before{color:#7f5af0}
+
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{background:rgba(255,255,255,.02);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+.card h3{font-size:18px;margin-bottom:6px}
+.card p{color:var(--muted);margin-bottom:10px}
+.card ul{display:grid;gap:6px;color:var(--text);opacity:.9}
+
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.steps li{background:rgba(255,255,255,.02);border:1px solid var(--line);border-radius:var(--radius);padding:18px;position:relative}
+.step-kicker{position:absolute;top:12px;right:12px;font-size:12px;color:var(--muted)}
+.steps h3{margin-bottom:6px;font-size:16px}
+.steps p{color:var(--muted)}
+
+.grid-work{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.work-item{display:flex;flex-direction:column;gap:8px}
+.work-thumb{border-radius:12px;height:160px;border:1px solid var(--line);background:linear-gradient(135deg,rgba(125,160,255,.18),rgba(109,220,255,.12));position:relative;overflow:hidden}
+.work-thumb::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient( to bottom, rgba(0,0,0,.0) 0px, rgba(0,0,0,.0) 2px, rgba(255,255,255,.04) 3px, rgba(0,0,0,.0) 4px );opacity:.25;pointer-events:none}
+.shimmer::after{content:"";position:absolute;inset:-40%;transform:skewX(-20deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);animation:shimmer 4s infinite}
+@keyframes shimmer{0%{transform:translateX(-60%) skewX(-20deg)}100%{transform:translateX(60%) skewX(-20deg)}}
+
+.section-emphasis{background:linear-gradient(180deg,rgba(125,160,255,.06),transparent 50%) }
+.contact{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:start}
+.contact-form{display:grid;gap:12px;background:rgba(255,255,255,.02);border:1px solid var(--line);padding:16px;border-radius:var(--radius)}
+.contact-form label{display:grid;gap:6px}
+.contact-form input,.contact-form textarea{background:#0c1218;border:1px solid var(--line);color:var(--text);padding:10px 12px;border-radius:10px}
+.contact-form input::placeholder,.contact-form textarea::placeholder{color:#6b7a91}
+
+/* Terminal aesthetic for contact page */
+.page-contact .contact-form{background:#0a0f14;border-color:#0b1a26;box-shadow:inset 0 0 0 1px rgba(109,220,255,.08),0 8px 24px rgba(0,0,0,.35);position:relative;padding-top:40px}
+.page-contact .contact-form::before{content:"$ start-project";position:absolute;top:10px;left:12px;color:var(--brand);font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-size:12px;opacity:.9}
+.page-contact .contact-form label span{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;color:#8ab6ff;font-size:13px}
+.page-contact .contact-form input,.page-contact .contact-form textarea{background:#061018;border-color:#0b1a26}
+.page-contact .button.primary{background:#0b1722;color:#e6edf7;border-color:#153247}
+.page-contact .button.primary:hover{background:#0e1e2c}
+
+.site-footer{padding:28px 0}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:18px}
+.social{display:flex;gap:14px}
+.social a{color:var(--muted);text-decoration:none}
+.social a:hover{color:var(--text)}
+
+@media (max-width: 900px){
+  .cards{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .grid-work{grid-template-columns:1fr 1fr}
+  .contact{grid-template-columns:1fr}
+}
+
+@media (max-width: 600px){
+  .hero{padding-top:70px}
+  .steps{grid-template-columns:1fr}
+  .grid-work{grid-template-columns:1fr}
+}
+
+
