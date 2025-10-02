@@ -1,13 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
-  <circle cx="32" cy="32" r="24" fill="#111723"/>
-  <path d="M20 28c3-3 6-4 12-4s9 1 12 4" stroke="#6ddcff" stroke-width="3" stroke-linecap="round"/>
-  <path d="M20 36c3 3 6 4 12 4s9-1 12-4" stroke="#7f5af0" stroke-width="3" stroke-linecap="round"/>
-  <circle cx="32" cy="32" r="2" fill="#6ddcff"/>
+  <defs>
+    <linearGradient id="oliveFavicon" x1="18" y1="12" x2="46" y2="52" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7ca765"/>
+      <stop offset="1" stop-color="#476538"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="8" width="48" height="48" rx="20" fill="#0f1a12"/>
+  <ellipse cx="32" cy="32" rx="14" ry="18" fill="url(#oliveFavicon)"/>
+  <circle cx="32" cy="32" r="6" fill="#0f1a12" opacity="0.75"/>
 </svg>
-
-
-
-
-
-
-
